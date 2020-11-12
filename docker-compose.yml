@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: ./takeoff
+      dockerfile: ./app/Dockerfile
+    ports:
+      - 8080:8080
+
+  script:
+    build:
+      context: ./takeoff
+      dockerfile: ./script/Dockerfile
+    network_mode: "service:app"
