@@ -49,7 +49,7 @@ Each notification sent to our mobile app should contain the data your API receiv
 {
 	"uid": string,
 	"timeZone": string,
-	"sendDate": string
+	"scheduledDate": string
 }
 ```
 
