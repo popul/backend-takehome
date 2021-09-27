@@ -11,19 +11,19 @@ git clone https://github.com/xpcapital/backend-takehome.git
 
 ## Introduction
 
-As you probably heard during you first interview, takeoff labs produces social consumer apps.
-Among other things, it means that we have a lot of users spreaded accross the world.
+As you probably heard during your first interview, Takeoff Labs builds social consumer apps.
+Among other things, it means that we have a lot of users spreaded arround the world.
 
 We often want to send our users notifications, emails etc.<br/>
-Most of the time in real time, a new message notification for example, and sometimes with some delay, like when we want the user to receive a notification at a particular time of the day.
+Most of the time in real time (e.g. a new message notification) but also sometimes with a delay (e.g. when we want to reengage our users with push notifications received at a given date and time). 
 
-Also most of our users are overseas. It means that they live in various timezones, and we often have to take it into account when scheduling tasks.
+Moreover since most users are abroad, they might have different timezones which we may want to consider when scheduling particular tasks. 
 
 ## Instructions
 
-In this test you will be asked to implement a solution for the latter, simplified as a task scheduling problem.
+In this test you will be asked to implement a solution for the second type of notification: namely those that are scheduled.
 
-Your task will be to code a very simple REST API with a unique endpoint that listens on `localhost:3001`.
+Your task will be to implemented a very simple REST API with a unique endpoint that listens on `localhost:3001`.
 
 This endpoint should be `POST /user` (body described below).
 
@@ -34,15 +34,16 @@ This endpoint should be `POST /user` (body described below).
 }
 ```
 
-For each request it receives on this endpoint, the API should send a few requests to our app listening on `localhost:8080` on the `POST /` endpoint:
+For each request received on this endpoint, the API should send a couple of requests (which we will call *notification*) to the client app which is listening on `localhost:8080` on the `POST /` endpoint. 
 
-- One in 2 minutes after receiving the request.
-- Two the same day. Each at a random time between 7:00 PM and 9:00 PM in the received `timeZone` (They are skipped if we are currently past the timeframe)
-- Two the next day. Each at a random time between 8:00 AM and 12:00 PM in the received `timeZone`
+Suppose you receive a request `R` at time `T` on the `POST /user` endpoint. Here is the list of *notifications* that should be triggered:   
+- One scheduled at `T + 2 min`
+- Two scheduled on the same Day than `Day(T)`, sent each at random times picked between 7 and 9PM in the user's `timeZone` (those are skipped if this timeframe is already past). 
+- Two at Day `Day(T) + 1`, sent each at random times picked between 8AM and 12PM.  
 
 You don't have to check if timeZone is valid as we only send valid ones.
 
-Each request to our app should contain the data your API received + the random time you computed (body described below).
+Each notification sent to our mobile app should contain the data your API received + the random time you computed (body described below).
 
 ```Typescript
 {
@@ -66,7 +67,7 @@ You'll find our code under the `takeoff` directory.
 It contains :
 
 - The script sending requests to your API. As you can see, it will keep sending you requests until it receives a valid answer from your server.
-- The app that will receive your request. It basically just log what you sent.
+- The app that will receive your request. It basically just logs what you sent.
 
 If you want to run the app or the script outside of a docker container you would typically use the following commands :
 
@@ -79,6 +80,6 @@ yarn send:tasks # Run the script
 
 At the root of the project you will also find a `docker-compose.yml` file.
 <br/>
-As of now, it only starts our app and script, it is yours to complete it so it also launches your API.<br/>
+As of now, it only starts our app and script, it's your responsability to modify it such that it also launches the API you built.<br/>
 Feel free to update it as long as you respect the rules.<br/>
-You can even modify our Docker architecture if you think it would make it better, but please notify us and keep in mind the time limit.
+You can even modify our Docker architecture if you think it would make it better, but please notify us and keep in mind that you have a deadline.
