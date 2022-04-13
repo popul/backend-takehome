@@ -1,5 +1,6 @@
+import { Console } from 'console';
 import fastify from 'fastify';
-import { UserTaskData } from '../../share';
+import { UserTaskData } from '../share';
 
 const server = fastify();
 
@@ -29,3 +30,5 @@ server.post<{
     process.exit(1)
   }
 })();
+
+console.log('app started !');

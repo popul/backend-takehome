@@ -1,6 +1,7 @@
 {
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "script/**/*.ts"
   ],
   "compilerOptions": {
     "target": "es2020",
