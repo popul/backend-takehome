@@ -1,13 +1,13 @@
 import http from 'http';
 import express, { Router } from 'express';
 import bodyParser from 'body-parser';
-import { user } from './user';
+import { userRoute } from './user';
 
 const HTTP_PORT = 3001;
 
 function initRoutes(app: Router) {
     app.use(bodyParser.json());
-    app.post('/user', user);
+    app.post('/user', userRoute);
 }
 
 function startServer() {

@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "build:docker": "tsc --module commonjs",
-    "start:app": "node ./dist/app/src/server.js",
+    "start:app": "node ./dist/src/server.js",
     "send:tasks": "node ./dist/script/tasks.js"
   },
   "dependencies": {
