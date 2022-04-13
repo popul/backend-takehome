@@ -4,13 +4,13 @@ services:
   app:
     build:
       context: ./app
-      dockerfile: ./app/Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - 8080:8080
   api:
     build:
       context: ./api
-      dockerfile: ./api/Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - 3001:3001      
 

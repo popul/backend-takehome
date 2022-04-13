@@ -4,7 +4,7 @@
     "script/**/*.ts"
   ],
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es5",
     "lib": [
       "es2020"
     ],
