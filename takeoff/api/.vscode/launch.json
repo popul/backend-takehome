@@ -23,6 +23,25 @@
             "skipFiles": [
                 "<node_internals>/**"
             ]
-        },
+        }, 
+        {
+            "name": "api",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+              "--nolazy",
+              "-r",
+              "ts-node/register",
+            ],
+            "args": [
+              "./src/index.ts",
+            ],
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+              "<node_internals>/**",
+              "node_modules/**"
+            ]
+        }
     ]
 }
