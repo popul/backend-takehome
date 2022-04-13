@@ -14,8 +14,7 @@ export const createUserLogic =
   ) =>
   async (body: any) => {
     const now = new Date();
-    // const t2min = new Date(now.getTime() + 2 * 60 * 1000).getTime();
-    const t2min = new Date(now.getTime() + 1000).getTime();
+    const t2min = new Date(now.getTime() + 2 * 60 * 1000).getTime();
 
     const list = appendToList({
       ...body,
