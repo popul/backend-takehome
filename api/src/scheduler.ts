@@ -1,5 +1,6 @@
 import { nodeRequest } from "./api/nodeRequest";
-import { getScheduleList, setScheduleList } from "./store";
+import { writeToFile } from "./api/writeToFile";
+import { getScheduleList, SCHEDULE_FILE_PATH, setScheduleList } from "./store";
 
 export const sendClientRequest = async (json: any) => {
   await nodeRequest({
@@ -38,7 +39,8 @@ export const createTriggerSchedule =
       })
     );
 
-    setScheduleList(passedScheduled);
+    setScheduleList(list);
+    writeToFile(SCHEDULE_FILE_PATH, list);
   };
 
 export const startScheduler = () => {

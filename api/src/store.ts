@@ -1,6 +1,6 @@
 export const SCHEDULE_FILE_PATH = "./schedule.json";
 
-type Schedule = {
+export type Schedule = {
     uuid: string;
     timeZone: string;
     time: number;

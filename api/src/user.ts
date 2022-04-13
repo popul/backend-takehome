@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import { writeToFile } from "./api/writeToFile";
-import { SCHEDULE_FILE_PATH } from "./store";
+import { getScheduleList, Schedule, SCHEDULE_FILE_PATH } from "./store";
 
+const appendToList = (schedule: Schedule) => {
+  const list = getScheduleList();
+  list.push(schedule);
+  return list;
+}
 
 export const createUserLogic =
   (
@@ -9,12 +14,15 @@ export const createUserLogic =
   ) =>
   async (body: any) => {
     const now = new Date();
-    const t2min = new Date(now.getTime() + 2 * 60 * 1000).getTime();
+    // const t2min = new Date(now.getTime() + 2 * 60 * 1000).getTime();
+    const t2min = new Date(now.getTime() + 1000).getTime();
 
-    writeToFile(SCHEDULE_FILE_PATH, {
+    const list = appendToList({
       ...body,
       time: t2min,
     });
+
+    writeToFile(SCHEDULE_FILE_PATH ,list);
   };
 
 export const userRoute = async (req: Request, res: Response) => {
