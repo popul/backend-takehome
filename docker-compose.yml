@@ -3,13 +3,19 @@ version: "3.9"
 services:
   app:
     build:
-      context: ./takeoff
+      context: ./app
       dockerfile: ./app/Dockerfile
     ports:
       - 8080:8080
-
-  script:
+  api:
     build:
-      context: ./takeoff
-      dockerfile: ./script/Dockerfile
-    network_mode: "service:app"
+      context: ./api
+      dockerfile: ./api/Dockerfile
+    ports:
+      - 3001:3001      
+
+  # script:
+  #   build:
+  #     context: ./takeoff
+  #     dockerfile: ./script/Dockerfile
+  #   network_mode: "service:app"
