@@ -7,7 +7,7 @@ const MAX_NUMBER_OF_CALL: number = 1000;
 
 const instance: AxiosInstance = axios.create({
   baseURL: "http://localhost:3001/",
-  timeout: 1000,
+  timeout: 3000,
   headers: { "content-type": "application/json" },
 });
 
@@ -39,7 +39,7 @@ function sleep(ms: number): Promise<void> {
       res = await Promise.all(users.map((user: User) => instance.post("/user", user)));
       console.log(`Successfully sent ${res.length} tasks`);
     } catch (err) {
-      console.error(err);
+      console.error('error');
     }
   } while (!res);
 })();

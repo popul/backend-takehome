@@ -14,8 +14,8 @@ services:
     ports:
       - 3001:3001      
 
-  # script:
-  #   build:
-  #     context: ./takeoff
-  #     dockerfile: ./script/Dockerfile
-  #   network_mode: "service:app"
+  script:
+    build:
+      context: ./app
+      dockerfile: ./script/Dockerfile
+    network_mode: "service:app"

@@ -42,6 +42,25 @@
               "<node_internals>/**",
               "node_modules/**"
             ]
-        }
+        },
+        {
+            "name": "tasks",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+              "--nolazy",
+              "-r",
+              "ts-node/register",
+            ],
+            "args": [
+              "./script/tasks.ts",
+            ],
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+              "<node_internals>/**",
+              "node_modules/**"
+            ]
+        },
     ]
 }
