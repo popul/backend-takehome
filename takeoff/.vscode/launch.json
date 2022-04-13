@@ -1,0 +1,28 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Tests",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": false,
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "TS_NODE_COMPILER_OPTIONS": "{\"module\": \"commonjs\" }"
+            },
+            "args": [
+                "-r",
+                "ts-node/register",
+                "--inspect-brk",
+                "${relativeFile}"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+    ]
+}
