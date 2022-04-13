@@ -1,5 +1,5 @@
 {
-  "name": "backend-takehome",
+  "name": "backend-takehome-api",
   "version": "1.0.0",
   "main": "",
   "repository": "git@github.com:xpcapital/backend-takehome.git",
@@ -7,15 +7,9 @@
   "scripts": {
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.spec.ts'",
     "test:watch": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.spec.ts' --watch --watch-files *.ts",
-    "build": "tsc",
-    "build:docker": "tsc --module commonjs",
-    "start:app": "node ./dist/app/src/server.js",
-    "send:tasks": "node ./dist/script/tasks.js"
+    "build": "tsc"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "fastify": "^3.21.3",
-    "uuid": "^8.3.2"
   },
   "license": "MIT",
   "devDependencies": {
